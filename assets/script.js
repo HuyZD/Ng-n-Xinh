@@ -426,31 +426,31 @@ const interactiveObjects = [];
 
 const wishList = [
   {
-    text: "Chúc cậu và gia đình một mùa Trung Thu đoàn viên, tràn ngập niềm vui và hạnh phúc!",
+    text: "Chúc em yêu của anh một mùa Trung Thu thật ấm áp, luôn vui vẻ, hạnh phúc và mãi nở nụ cười xinh đẹp như ánh trăng rằm.",
     img: "./assets/1.jpg",
   },
   {
-    text: "Cầu chúc cho mọi nguyện ước của cậu đêm nay sẽ trở thành hiện thực.",
+    text: "Anh mong mọi điều ước của em trong đêm Trung Thu này đều sẽ trở thành hiện thực, và anh sẽ luôn là người đồng hành cùng em trên mọi chặng đường.",
     img: "./assets/2.jpg",
   },
   {
-    text: "Trăng tròn ấm áp, chúc tình cậu và tình yêu của chúng ta mãi bền chặt.",
+    text: "Trăng có thể tròn rồi lại khuyết, nhưng tình yêu anh dành cho em sẽ luôn đầy đặn và mãi vẹn nguyên.",
     img: "./assets/3.jpg",
   },
   {
-    text: "Chúc cậu luôn giữ được tâm hồn trong trẻo, yêu đời như ánh trăng rằm.",
+    text: "Chúc cô gái của anh luôn giữ được sự đáng yêu, trong trẻo và hạnh phúc mỗi ngày. Mong em luôn được yêu thương thật nhiều.",
     img: "./assets/1.jpg",
   },
   {
-    text: "Trung Thu bình an, vạn sự như ý, công danh thăng tiến rực rỡ!",
+    text: "Trung Thu này anh không chỉ chúc em bình an, may mắn và thành công, mà còn chúc chúng ta sẽ mãi bên nhau thật lâu.",
     img: "./assets/2.jpg",
   },
   {
-    text: "Chúc riêng cậu một đêm trăng thật lãng mạn và ngọt ngào.",
+    text: "Chúc em có một đêm Trung Thu thật lãng mạn, ngọt ngào. Mong rằng ánh trăng hôm nay sẽ thay anh ôm lấy em khi anh không ở bên.",
     img: "./assets/3.jpg",
   },
   {
-    text: "Sức khỏe dồi dào, tâm an yên, miệng luôn mỉm cười rạng rỡ.",
+    text: "Cảm ơn em vì đã xuất hiện trong cuộc đời anh. Chúc em luôn khỏe mạnh, vui vẻ và mãi là cô gái đặc biệt nhất trong tim anh.",
     img: "./assets/1.jpg",
   },
 ];
