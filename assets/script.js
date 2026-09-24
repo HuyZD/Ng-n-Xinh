@@ -40,7 +40,7 @@ controls.minDistance = 8;
 controls.maxDistance = 85;
 controls.target.copy(DEFAULT_CAM_TARGET);
 
-// LIGHTS
+// ============ LIGHTING & MOON ============
 const ambientLight = new THREE.AmbientLight(0x2a103d, 1.4);
 scene.add(ambientLight);
 
@@ -51,6 +51,66 @@ scene.add(treeLight);
 const warmLight = new THREE.PointLight(0xffaa33, 2.0, 30);
 warmLight.position.set(0, -2, 0);
 scene.add(warmLight);
+
+// ============ MOON (Trăng Rằm) ✨ ============
+function createMoon() {
+  const moonGroup = new THREE.Group();
+  
+  // Main moon sphere
+  const moonGeo = new THREE.SphereGeometry(8, 64, 64);
+  const moonMat = new THREE.MeshStandardMaterial({
+    color: 0xfffacd,              // Lemon Chiffon - warm gold
+    emissive: 0xffeb3b,           // Glow color
+    emissiveIntensity: 0.6,       // Glow strength
+    metalness: 0.1,
+    roughness: 0.7,
+  });
+  const moonMesh = new THREE.Mesh(moonGeo, moonMat);
+  moonGroup.add(moonMesh);
+  
+  // Moon craters (tối để tạo chiều sâu)
+  const craterMat = new THREE.MeshStandardMaterial({
+    color: 0xe6b800,
+    emissive: 0xffcc00,
+    emissiveIntensity: 0.4,
+    metalness: 0.0,
+    roughness: 0.9,
+  });
+  
+  // Thêm một số crater để tạo chi tiết
+  for (let i = 0; i < 5; i++) {
+    const craterGeo = new THREE.SphereGeometry(
+      1.5 + Math.random() * 1.5,
+      16,
+      16
+    );
+    const craterMesh = new THREE.Mesh(craterGeo, craterMat);
+    
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.random() * Math.PI * 0.8 + Math.PI * 0.1;
+    
+    craterMesh.position.set(
+      Math.sin(phi) * Math.cos(theta) * 7,
+      Math.cos(phi) * 7,
+      Math.sin(phi) * Math.sin(theta) * 7
+    );
+    moonGroup.add(craterMesh);
+  }
+  
+  // Point light từ trăng
+  const moonLight = new THREE.PointLight(0xfffacd, 1.2, 100);
+  moonLight.position.set(0, 0, 0);
+  moonGroup.add(moonLight);
+  
+  // Đặt trăng ở vị trí cao, góc phải
+  moonGroup.position.set(60, 50, 40);
+  moonGroup.scale.set(0.8, 0.8, 0.8);
+  
+  return moonGroup;
+}
+
+const moon = createMoon();
+scene.add(moon);
 
 // ISLAND
 const islandGroup = new THREE.Group();
@@ -188,16 +248,21 @@ for (let i = 0; i < mainBranchCount; i++) {
   branchClusters.push({ center: endP, radius: 3.2 + Math.random() * 1.0 });
 }
 
-// HỆ THỐNG TÁN LÁ
-const particleCount = isMobile ? 22000 : 38000;
+// ============ IMPROVED CHERRY BLOSSOM SYSTEM ============
+// Tăng lượng hạt cho hiệu ứng lung linh hơn
+const particleCount = isMobile ? 32000 : 58000;
 const blossomGeo = new THREE.BufferGeometry();
 const blossomPos = new Float32Array(particleCount * 3);
 const blossomColors = new Float32Array(particleCount * 3);
+const blossomSizes = new Float32Array(particleCount);
 
-const colorDustyPink = new THREE.Color(0xe8a2a8);
-const colorSoftPink = new THREE.Color(0xf0b6bc);
-const colorPaleRose = new THREE.Color(0xf7d1d5);
-const colorSoftWhite = new THREE.Color(0xfdf0f2);
+// Màu sắc lung linh - sáng hơn, tươi hơn
+const colorDustyPink = new THREE.Color(0xffb6c1);    // Light Pink ✨
+const colorSoftPink = new THREE.Color(0xffc0cb);     // Classic Pink
+const colorPaleRose = new THREE.Color(0xffd1dc);     // Pale Rose
+const colorSoftWhite = new THREE.Color(0xfff0f5);    // Lavender Blush
+const colorHotPink = new THREE.Color(0xffc0c0);      // Hot Pink
+const colorDeepPink = new THREE.Color(0xffb3d9);     // Deep Pink
 
 const clusters = [
   { center: new THREE.Vector3(0, 9.5, 0), radius: 6.2 },
@@ -222,30 +287,36 @@ for (let i = 0; i < particleCount; i++) {
   blossomPos[i * 3 + 1] = y;
   blossomPos[i * 3 + 2] = z;
 
-  const heightFactor = THREE.MathUtils.clamp((y - 3) / 7, 0, 1);
+  // Chọn màu lung linh hơn
   const randC = Math.random();
   let col;
+  let size = 0.6 + Math.random() * 0.8; // Kích thước hạt lớn hơn
 
-  if (heightFactor < 0.3) {
-    col = randC < 0.6 ? colorDustyPink : colorSoftPink;
-  } else if (heightFactor < 0.7) {
-    col =
-      randC < 0.4
-        ? colorSoftPink
-        : randC < 0.8
-          ? colorPaleRose
-          : colorDustyPink;
+  if (randC < 0.25) {
+    col = colorSoftWhite;     // Trắng sáng
+    size *= 1.2;              // Lớn hơn
+  } else if (randC < 0.45) {
+    col = colorHotPink;       // Hồng sâu
+    size *= 1.1;
+  } else if (randC < 0.65) {
+    col = colorSoftPink;      // Hồng mềm
+  } else if (randC < 0.80) {
+    col = colorPaleRose;      // Hồng nhạt
+  } else if (randC < 0.92) {
+    col = colorDeepPink;      // Hồng sâu
   } else {
-    col = randC < 0.5 ? colorSoftWhite : colorPaleRose;
+    col = colorDustyPink;     // Hồng bụi
   }
 
   blossomColors[i * 3] = col.r;
   blossomColors[i * 3 + 1] = col.g;
   blossomColors[i * 3 + 2] = col.b;
+  blossomSizes[i] = size;
 }
 
 blossomGeo.setAttribute("position", new THREE.BufferAttribute(blossomPos, 3));
 blossomGeo.setAttribute("color", new THREE.BufferAttribute(blossomColors, 3));
+blossomGeo.setAttribute("size", new THREE.BufferAttribute(blossomSizes, 1));
 
 function createParticleTexture() {
   const canvas = document.createElement("canvas");
@@ -264,12 +335,13 @@ function createParticleTexture() {
 }
 
 const blossomMat = new THREE.PointsMaterial({
-  size: isMobile ? 0.5 : 0.42,
+  size: isMobile ? 0.7 : 0.65,           // Tăng kích thước
+  sizeAttenuation: true,                 // Cho phép thay đổi size
   vertexColors: true,
   map: createParticleTexture(),
   transparent: true,
-  opacity: 0.75,
-  blending: THREE.NormalBlending,
+  opacity: 0.85,                         // Tăng độ mờ
+  blending: THREE.AdditiveBlending,      // Thêm glow effect ✨
   depthWrite: false,
 });
 
@@ -670,25 +742,24 @@ window.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeWishCard();
 });
 
-// AUDIO
+// ============ AUDIO - AUTO PLAY ============
 const bgm = document.getElementById("bgm");
-const audioBtn = document.getElementById("audio-btn");
-let isPlaying = false;
+let audioStarted = false;
 
-audioBtn.addEventListener("click", () => {
-  if (isPlaying) {
-    bgm.pause();
-    audioBtn.innerHTML = '<i class="fas fa-music" style="opacity:0.5;"></i>';
-  } else {
-    bgm
-      .play()
-      .then(() => {
-        audioBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-      })
-      .catch(() => {});
-  }
-  isPlaying = !isPlaying;
-});
+// Auto play music on first user interaction
+function startAudio() {
+  if (audioStarted) return;
+  bgm.muted = false;
+  bgm.play().catch(() => {
+    // Silently fail if autoplay is blocked
+  });
+  audioStarted = true;
+}
+
+// Listen for any user interaction
+document.addEventListener("click", startAudio, { once: true });
+document.addEventListener("touchstart", startAudio, { once: true });
+document.addEventListener("pointerdown", startAudio, { once: true });
 
 // ANIMATION
 const clock = new THREE.Clock();
@@ -747,6 +818,15 @@ function animate() {
   }
 
   islandGroup.rotation.y = Math.sin(time * 0.15) * 0.05;
+
+  // Moon animation - soft glow pulse
+  if (moon) {
+    const moonMaterial = moon.children[0].material;
+    moonMaterial.emissiveIntensity = 0.5 + Math.sin(time * 0.5) * 0.2;
+    
+    // Soft wobble
+    moon.rotation.z = Math.sin(time * 0.08) * 0.02;
+  }
 
   updateRabbits(time);
 
