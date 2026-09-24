@@ -439,19 +439,19 @@ const wishList = [
   },
   {
     text: "Chúc cô gái của anh luôn giữ được sự đáng yêu, trong trẻo và hạnh phúc mỗi ngày. Mong em luôn được yêu thương thật nhiều.",
-    img: "./assets/1.jpg",
+    img: "./assets/4.jpg",
   },
   {
     text: "Trung Thu này anh không chỉ chúc em bình an, may mắn và thành công, mà còn chúc chúng ta sẽ mãi bên nhau thật lâu.",
-    img: "./assets/2.jpg",
+    img: "./assets/5.jpg",
   },
   {
     text: "Chúc em có một đêm Trung Thu thật lãng mạn, ngọt ngào. Mong rằng ánh trăng hôm nay sẽ thay anh ôm lấy em khi anh không ở bên.",
-    img: "./assets/3.jpg",
+    img: "./assets/6.jpg",
   },
   {
     text: "Cảm ơn em vì đã xuất hiện trong cuộc đời anh. Chúc em luôn khỏe mạnh, vui vẻ và mãi là cô gái đặc biệt nhất trong tim anh.",
-    img: "./assets/1.jpg",
+    img: "./assets/7.jpg",
   },
 ];
 
