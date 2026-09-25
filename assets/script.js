@@ -456,6 +456,11 @@ const wishList = [
   },
 ];
 
+// Thứ tự hiển thị theo vị trí trong wishList: 
+// Lần 1: asset/1 (0) -> Lần 2: asset/3 (2) -> Lần 3: asset/2 (1) -> Lần 4: asset/4 (3) -> Lần 5: asset/5 (4) -> Lần 6: asset/7 (6) -> Lần 7: asset/6 (5)
+const wishOrder = [0, 2, 1, 3, 4, 6, 5];
+let currentClickIndex = 0;
+
 function createLanternTexture() {
   const canvas = document.createElement("canvas");
   canvas.width = 128;
@@ -705,8 +710,13 @@ function onPointerUp(event) {
     targetCamPos = new THREE.Vector3().addVectors(lPos, offset);
     targetCamTarget = lPos.clone();
 
-    wishText.textContent = `"${selectedLantern.userData.wish}"`;
-    wishImage.src = selectedLantern.userData.imgUrl;
+    const orderIndex = wishOrder[currentClickIndex % wishOrder.length];
+    const currentWish = wishList[orderIndex];
+
+    wishText.textContent = `"${currentWish.text}"`;
+    wishImage.src = currentWish.img;
+
+    currentClickIndex++;
 
     setTimeout(() => {
       wishModal.classList.add("active");
