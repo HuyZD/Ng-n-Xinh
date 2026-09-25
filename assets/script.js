@@ -426,31 +426,32 @@ const interactiveObjects = [];
 
 const wishList = [
   {
-    text: "Chúc em yêu của anh một mùa Trung Thu thật ấm áp, luôn vui vẻ, hạnh phúc và mãi nở nụ cười xinh đẹp như ánh trăng rằm.",
+    text: "Chúc em có một mùa Trung Thu thật ấm áp, luôn vui vẻ, hạnh phúc và mãi  xinh đẹp như như đóa hoa em đang cầm trên tay :33.",
     img: "./assets/1.jpg",
   },
   {
-    text: "Anh mong mọi điều ước của em trong đêm Trung Thu này đều sẽ trở thành hiện thực, và anh sẽ luôn là người đồng hành cùng em trên mọi chặng đường.",
+    // text: "Anh mong mọi điều ước của em trong đêm Trung Thu này đều sẽ trở thành hiện thực, và anh sẽ luôn là người đồng hành cùng em trên mọi chặng đường.",
+    text: "Ngày thứ 2 mình đi chơi với nhau. Anh dẫn em đi lòng vòng thế mà em chả than câu nào, người đâu mà hiền dễ sợ  ( sau này thì không biết :3). Dù sao thì, anh mong là chúng ta sẽ có thể cùng nhau đi xem phim nhiều nhiều hơn nữa !",
     img: "./assets/2.jpg",
   },
   {
-    text: "Trăng có thể tròn rồi lại khuyết, nhưng tình yêu anh dành cho em sẽ luôn đầy đặn và mãi vẹn nguyên.",
+    text: "Ngày đầu gặp nhau ! Mới gặp em lần đầu , anh bất ngờ v. Người đâu vừa xinh, vừa ăn mặc có gu, cứ tưởng em này chảnh chảnh, khó gần. Nhưng khi gặp em, nói chuyện , anh mới thấy em là cô gái dễ thương, hiểu chuyện, đúng gu anh luôn . Chúc em mãi xinh đẹp như ngày đầu mình gặp nhau (xinh hơn thì càng tốt ) :)))",
     img: "./assets/3.jpg",
   },
   {
-    text: "Chúc cô gái của anh luôn giữ được sự đáng yêu, trong trẻo và hạnh phúc mỗi ngày. Mong em luôn được yêu thương thật nhiều.",
+    text: "Chúc em luôn giữ được sự đáng yêu, trong trẻo và hạnh phúc mỗi ngày. Mong rằng anh sẽ là người được che chở , bảo vệ em và  được cùng em đi vi vu khắp nơi !!",
     img: "./assets/4.jpg",
   },
   {
-    text: "Trung Thu này anh không chỉ chúc em bình an, may mắn và thành công, mà còn chúc chúng ta sẽ mãi bên nhau thật lâu.",
+    text: "Từ lúc làm quen em , anh đã chăm sóc bản thân hơn. Anh bắt đầu skin care, tập gym để giống với hình tượng Giang tổng trong lòng em hơn hì. Dù sao thì , mong tổng tài sẽ có được nữ chính xinh đẹp của đời mình.",
     img: "./assets/5.jpg",
   },
   {
-    text: "Chúc em có một đêm Trung Thu thật lãng mạn, ngọt ngào. Mong rằng ánh trăng hôm nay sẽ thay anh ôm lấy em khi anh không ở bên.",
+    text: "Mặc váy vào đi , tối anh dẫn đi chơi trung thu !!",
     img: "./assets/6.jpg",
   },
   {
-    text: "Cảm ơn em vì đã xuất hiện trong cuộc đời anh. Chúc em luôn khỏe mạnh, vui vẻ và mãi là cô gái đặc biệt nhất trong tim anh.",
+    text: "Cảm ơn em vì đã xuất hiện trong cuộc đời anh. Chẳng phải phép màu, tại sao chúng ta gặp nhau, một người khẽ cười, người kia cũng dịu lỗi đau uuuu ",
     img: "./assets/7.jpg",
   },
 ];
